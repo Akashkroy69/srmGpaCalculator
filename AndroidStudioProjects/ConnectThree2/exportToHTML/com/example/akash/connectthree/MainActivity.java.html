@@ -1,0 +1,163 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+.s3 { color: rgb(0,0,255); }
+.s4 { color: rgb(0,128,0); font-weight: bold; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MainActivity.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.example.akash.connectthree; 
+ 
+</span><span class="s0">import </span><span class="s1">android.support.v7.app.AppCompatActivity; 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle; 
+</span><span class="s0">import </span><span class="s1">android.util.Log; 
+</span><span class="s0">import </span><span class="s1">android.view.View; 
+</span><span class="s0">import </span><span class="s1">android.widget.Button; 
+</span><span class="s2">//import android.widget.ImageButton;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.widget.ImageView; 
+</span><span class="s0">import </span><span class="s1">android.widget.TextView; 
+</span><span class="s0">import </span><span class="s1">android.widget.Toast; 
+ 
+</span><span class="s0">import </span><span class="s1">org.w3c.dom.Text; 
+ 
+</span><span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity { 
+    </span><span class="s0">static int </span><span class="s1">winstate=</span><span class="s3">0</span><span class="s1">; 
+    </span><span class="s0">boolean </span><span class="s1">instruct=</span><span class="s0">true</span><span class="s1">; 
+    </span><span class="s0">int </span><span class="s1">coinTurn=</span><span class="s3">1</span><span class="s1">; 
+    </span><span class="s2">//1 for yellow, 0 for red, 2 for empty</span><span class="s1"> 
+    </span><span class="s0">int</span><span class="s1">[] gameState={</span><span class="s3">2</span><span class="s1">,</span><span class="s3">2</span><span class="s1">,</span><span class="s3">2</span><span class="s1">,</span><span class="s3">2</span><span class="s1">,</span><span class="s3">2</span><span class="s1">,</span><span class="s3">2</span><span class="s1">,</span><span class="s3">2</span><span class="s1">,</span><span class="s3">2</span><span class="s1">,</span><span class="s3">2</span><span class="s1">}; 
+    </span><span class="s2">//for each imageView here we are setting empty by setting 2 in each.</span><span class="s1"> 
+    </span><span class="s0">int</span><span class="s1">[][] winningPosition={{</span><span class="s3">0</span><span class="s1">,</span><span class="s3">1</span><span class="s1">,</span><span class="s3">2</span><span class="s1">},{</span><span class="s3">3</span><span class="s1">,</span><span class="s3">4</span><span class="s1">,</span><span class="s3">5</span><span class="s1">},{</span><span class="s3">6</span><span class="s1">,</span><span class="s3">7</span><span class="s1">,</span><span class="s3">8</span><span class="s1">},{</span><span class="s3">0</span><span class="s1">,</span><span class="s3">3</span><span class="s1">,</span><span class="s3">6</span><span class="s1">},{</span><span class="s3">1</span><span class="s1">,</span><span class="s3">4</span><span class="s1">,</span><span class="s3">7</span><span class="s1">},{</span><span class="s3">2</span><span class="s1">,</span><span class="s3">5</span><span class="s1">,</span><span class="s3">8</span><span class="s1">},{</span><span class="s3">0</span><span class="s1">,</span><span class="s3">4</span><span class="s1">,</span><span class="s3">8</span><span class="s1">},{</span><span class="s3">2</span><span class="s1">,</span><span class="s3">4</span><span class="s1">,</span><span class="s3">6</span><span class="s1">}}; 
+    </span><span class="s2">//set of position where if all the position match with same coin then that coin's player wins.</span><span class="s1"> 
+    </span><span class="s0">static int </span><span class="s1">tappedCunt=</span><span class="s3">0</span><span class="s1">; 
+    </span><span class="s0">public void </span><span class="s1">instructionOn(View view) 
+    { 
+ 
+        TextView instructionText=(TextView)findViewById(R.id.textView1); 
+        Button instructionButton=(Button)findViewById(R.id.instructionon); 
+        </span><span class="s0">if </span><span class="s1">(instruct) { 
+            instructionText.setText(</span><span class="s4">&quot;-&gt;2 Player Game</span><span class="s0">\n</span><span class="s4">-&gt;choose between red and yellow coins</span><span class="s0">\n</span><span class="s4">-&gt;Manage 3 consecutive coins</span><span class="s0">\n</span><span class="s4">to win&quot;</span><span class="s1">); 
+            instructionText.setVisibility(View.VISIBLE); 
+            instructionButton.setText(</span><span class="s4">&quot;Instruction Off&quot;</span><span class="s1">); 
+            instruct=</span><span class="s0">false</span><span class="s1">; 
+        } 
+        </span><span class="s0">else</span><span class="s1"> 
+        { 
+            instruct=</span><span class="s0">true</span><span class="s1">; 
+            instructionText.setVisibility(View.INVISIBLE); 
+            instructionButton.setText(</span><span class="s4">&quot;Instruction On&quot;</span><span class="s1">); 
+ 
+        } 
+ 
+ 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">restart(View view) 
+    { 
+        Button restartButton=(Button)findViewById(R.id.playButton); 
+ 
+        TextView text=(TextView)findViewById(R.id.winText); 
+        restartButton.setVisibility(view.INVISIBLE); 
+        text.setVisibility(view.INVISIBLE); 
+        setContentView(R.layout.activity_main); 
+        </span><span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s3">0</span><span class="s1">;i&lt;</span><span class="s3">9</span><span class="s1">;i++) 
+        { 
+            gameState[i]=</span><span class="s3">2</span><span class="s1">; 
+        } 
+        coinTurn=</span><span class="s3">1</span><span class="s1">; 
+        winstate=</span><span class="s3">0</span><span class="s1">; 
+        tappedCunt=</span><span class="s3">0</span><span class="s1">; 
+    } 
+    </span><span class="s0">public void </span><span class="s1">dropIn(View view) 
+    { 
+        String message=</span><span class="s4">&quot;&quot;</span><span class="s1">; 
+         </span><span class="s2">//winstate=0;</span><span class="s1"> 
+        </span><span class="s0">if</span><span class="s1">(winstate==</span><span class="s3">0</span><span class="s1">) { 
+            ImageView counter = (ImageView) view; 
+ 
+ 
+            Log.i(</span><span class="s4">&quot;tapped imageview of tag&quot;</span><span class="s1">, counter.getTag().toString()); 
+            </span><span class="s0">int </span><span class="s1">tappedImageView = Integer.parseInt(counter.getTag().toString()); 
+            </span><span class="s0">if </span><span class="s1">(gameState[tappedImageView] == </span><span class="s3">2</span><span class="s1">) { 
+                gameState[tappedImageView] = coinTurn; 
+ 
+                counter.setTranslationY(-</span><span class="s3">1000</span><span class="s1">); 
+                </span><span class="s0">if </span><span class="s1">(coinTurn == </span><span class="s3">1</span><span class="s1">) { 
+ 
+                    coinTurn = </span><span class="s3">0</span><span class="s1">; 
+                    counter.setImageResource(R.drawable.yellow); 
+                    tappedCunt++; 
+                } </span><span class="s0">else </span><span class="s1">{ 
+                    coinTurn = </span><span class="s3">1</span><span class="s1">; 
+                    counter.setImageResource(R.drawable.red); 
+                    tappedCunt++; 
+                } 
+                counter.animate().translationY(</span><span class="s3">10</span><span class="s1">).rotation(</span><span class="s3">72000</span><span class="s1">).setDuration(</span><span class="s3">1000</span><span class="s1">); 
+                </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int</span><span class="s1">[] winningPostion : winningPosition) { 
+                    </span><span class="s0">if </span><span class="s1">(gameState[winningPostion[</span><span class="s3">0</span><span class="s1">]] == gameState[winningPostion[</span><span class="s3">1</span><span class="s1">]] &amp;&amp; gameState[winningPostion[</span><span class="s3">1</span><span class="s1">]] == gameState[winningPostion[</span><span class="s3">2</span><span class="s1">]] &amp;&amp; gameState[winningPostion[</span><span class="s3">0</span><span class="s1">]] != </span><span class="s3">2</span><span class="s1">) { 
+                        winstate=</span><span class="s3">1</span><span class="s1">; 
+                        Button restartButton=(Button)findViewById(R.id.playButton); 
+                        restartButton.setVisibility(View.VISIBLE); 
+                        TextView text=(TextView)findViewById(R.id.winText); 
+                        </span><span class="s0">if </span><span class="s1">(gameState[winningPostion[</span><span class="s3">0</span><span class="s1">]] == </span><span class="s3">1</span><span class="s1">) { 
+                            message = </span><span class="s4">&quot;Person with Yellow coin has won!&quot;</span><span class="s1">; 
+                        } </span><span class="s0">else if </span><span class="s1">(gameState[winningPostion[</span><span class="s3">0</span><span class="s1">]] == </span><span class="s3">0</span><span class="s1">) { 
+                            message = </span><span class="s4">&quot;Person with Red coin has won!&quot;</span><span class="s1">; 
+                            </span><span class="s2">//text.setTextColor(241);</span><span class="s1"> 
+                        } 
+                        text.setVisibility(View.VISIBLE); 
+                        text.setText(message); 
+ 
+                        Toast.makeText(</span><span class="s0">this</span><span class="s1">, message, Toast.LENGTH_SHORT).show(); 
+                    } 
+ 
+ 
+ 
+                } 
+ 
+                </span><span class="s2">///CHECK ON FOLLOWING WHERE DID I GO WRONG.</span><span class="s1"> 
+        </span><span class="s2">/*int i; 
+        for(i=0;i&lt;9;i++) 
+        { 
+            int j=0; 
+            if(gameState[winningPosition[i][0]]==gameState[winningPosition[i][1]]&amp;&amp;gameState[winningPosition[i][1]]==gameState[winningPosition[i][2]]&amp;&amp;gameState[winningPosition[i][0]]!=0) 
+            { 
+                Toast.makeText(this,&quot;someone has won&quot;,Toast.LENGTH_LONG).show(); 
+            } 
+        }*/</span><span class="s1"> 
+            } 
+            </span><span class="s0">if </span><span class="s1">(tappedCunt == </span><span class="s3">9</span><span class="s1">) { 
+                message = </span><span class="s4">&quot;GameOver!&quot;</span><span class="s1">; 
+                Toast.makeText(</span><span class="s0">this</span><span class="s1">, message, Toast.LENGTH_LONG).show(); 
+                Button restartButton=(Button)findViewById(R.id.playButton); 
+                restartButton.setVisibility(View.VISIBLE); 
+            } 
+        } 
+        </span><span class="s0">else</span><span class="s1"> 
+        { 
+            message=</span><span class="s4">&quot;Game is already over!&quot;</span><span class="s1">; 
+            Toast.makeText(</span><span class="s0">this</span><span class="s1">,message,Toast.LENGTH_LONG).show(); 
+        } 
+    } 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_main); 
+    } 
+} 
+</span></pre>
+</body>
+</html>
