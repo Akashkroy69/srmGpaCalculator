@@ -24,7 +24,7 @@ public class Sem extends JFrame {
 
 	public JLabel subject[] = new JLabel[20];
 	public JTextField t[] = new JTextField[30];
-	public Container c;
+	public Container containerObj;
 	static float res = 0;
 	static double sum = 0.0, creditSum = 0;
 
@@ -35,9 +35,9 @@ public class Sem extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(3);
-		ImageIcon i = new ImageIcon("f:/Srm.png");
+		ImageIcon i = new ImageIcon("/home/akash/eclipse-workspace/srmGpaCalculator/src/srmGpaCalculator/Srm.png");
 		this.setIconImage(i.getImage());
-		this.setContentPane(new JLabel(new ImageIcon("f:/Srm.png")));
+		this.setContentPane(new JLabel(new ImageIcon("/home/akash/eclipse-workspace/srmGpaCalculator/src/srmGpaCalculator/Srm.png")));
 
 		setPar();
 
@@ -84,14 +84,14 @@ public class Sem extends JFrame {
 		// mb.add(dept);
 
 		Font font = new Font("Algerian", Font.BOLD, 20);
-		c = this.getContentPane();
-		c.setLayout(null);
+		containerObj = this.getContentPane();
+		containerObj.setLayout(null);
 
 		apptitle = new JLabel();
 		apptitle.setText("SRM GPA/CGPA CALCULATOR");
 		apptitle.setFont(font);
 		apptitle.setBounds(280, 40, 340, 20);
-		c.add(apptitle);
+		containerObj.add(apptitle);
 
 		i1.addActionListener(e -> {
 			setSem1();
@@ -153,7 +153,7 @@ public class Sem extends JFrame {
 
 		p.add(but);
 		p.add(result);
-		c.add(p);
+		containerObj.add(p);
 
 		p.setLayout(null);
 		p.setBackground(new Color(214, 214, 214));
@@ -234,7 +234,7 @@ public class Sem extends JFrame {
 
 				{
 
-					JOptionPane.showMessageDialog(c, "Enter Full Detail.");
+					JOptionPane.showMessageDialog(containerObj, "Enter Full Detail.");
 
 				}
 
@@ -262,7 +262,7 @@ public class Sem extends JFrame {
 		sum = 0.0;
 		creditSum = 0;
 		res = 0;
-		c.removeAll();
+		containerObj.removeAll();
 		JPanel p = new JPanel();
 		JButton but = new JButton("CALCULATE ");
 		but.setBounds(10, 330, 110, 20);
@@ -270,7 +270,7 @@ public class Sem extends JFrame {
 		result.setBounds(125, 330, 50, 20);
 		p.add(but);
 		p.add(result);
-		c.add(p);
+		containerObj.add(p);
 		p.setLayout(null);
 		p.setBackground(new Color(214, 214, 214));
 		p.setBounds(10, 100, 270, 500);
@@ -349,7 +349,7 @@ public class Sem extends JFrame {
 
 				{
 
-					JOptionPane.showMessageDialog(c, " ENTER FULL DETAIL ");
+					JOptionPane.showMessageDialog(containerObj, " ENTER FULL DETAIL ");
 
 				}
 
@@ -377,7 +377,7 @@ public class Sem extends JFrame {
 		sum = 0.0;
 		creditSum = 0;
 		res = 0;
-		c.removeAll();
+		containerObj.removeAll();
 		JPanel p = new JPanel();
 		JButton but = new JButton("CALCULATE ");
 		but.setBounds(10, 330, 110, 20);
@@ -385,7 +385,7 @@ public class Sem extends JFrame {
 		result.setBounds(125, 330, 50, 20);
 		p.add(but);
 		p.add(result);
-		c.add(p);
+		containerObj.add(p);
 		p.setLayout(null);
 		p.setBackground(new Color(214, 214, 214));
 		p.setBounds(10, 100, 270, 500);
@@ -464,7 +464,7 @@ public class Sem extends JFrame {
 
 				{
 
-					JOptionPane.showMessageDialog(c, " ENTER FULL DETAIL ");
+					JOptionPane.showMessageDialog(containerObj, " ENTER FULL DETAIL ");
 
 				}
 
@@ -499,7 +499,7 @@ public class Sem extends JFrame {
 		result.setBounds(125, 360, 50, 20);
 		p.add(but);
 		p.add(result);
-		c.add(p);
+		containerObj.add(p);
 		p.setLayout(null);
 		p.setBackground(new Color(214, 214, 214));
 		p.setBounds(10, 100, 270, 500);
@@ -579,7 +579,7 @@ public class Sem extends JFrame {
 
 				{
 
-					JOptionPane.showMessageDialog(c, " ENTER FULL DETAIL ");
+					JOptionPane.showMessageDialog(containerObj, " ENTER FULL DETAIL ");
 
 				}
 
@@ -614,7 +614,7 @@ public class Sem extends JFrame {
 		result.setBounds(125, 360, 50, 20);
 		p.add(but);
 		p.add(result);
-		c.add(p);
+		containerObj.add(p);
 		p.setLayout(null);
 		p.setBackground(new Color(214, 214, 214));
 		p.setBounds(10, 100, 270, 500);
@@ -694,7 +694,7 @@ public class Sem extends JFrame {
 
 				{
 
-					JOptionPane.showMessageDialog(c, " ENTER FULL DETAIL ");
+					JOptionPane.showMessageDialog(containerObj, " ENTER FULL DETAIL ");
 
 				}
 
@@ -729,7 +729,7 @@ public class Sem extends JFrame {
 		result.setBounds(125, 360, 50, 20);
 		p.add(but);
 		p.add(result);
-		c.add(p);
+		containerObj.add(p);
 		p.setLayout(null);
 		p.setBackground(new Color(214, 214, 214));
 		p.setBounds(10, 100, 270, 500);
@@ -809,7 +809,7 @@ public class Sem extends JFrame {
 
 				{
 
-					JOptionPane.showMessageDialog(c, " ENTER FULL DETAIL ");
+					JOptionPane.showMessageDialog(containerObj, " ENTER FULL DETAIL ");
 
 				}
 
@@ -844,7 +844,7 @@ public class Sem extends JFrame {
 		result.setBounds(125, 360, 50, 20);
 		p.add(but);
 		p.add(result);
-		c.add(p);
+		containerObj.add(p);
 		p.setLayout(null);
 		p.setBackground(new Color(214, 214, 214));
 		p.setBounds(10, 100, 270, 500);
@@ -924,7 +924,7 @@ public class Sem extends JFrame {
 
 				{
 
-					JOptionPane.showMessageDialog(c, " ENTER FULL DETAIL ");
+					JOptionPane.showMessageDialog(containerObj, " ENTER FULL DETAIL ");
 
 				}
 
@@ -959,7 +959,7 @@ public class Sem extends JFrame {
 		result.setBounds(125, 360, 50, 20);
 		p.add(but);
 		p.add(result);
-		c.add(p);
+		containerObj.add(p);
 		p.setLayout(null);
 		p.setBackground(new Color(214, 214, 214));
 		p.setBounds(10, 100, 270, 500);
@@ -1026,7 +1026,7 @@ public class Sem extends JFrame {
 
 				{
 
-					JOptionPane.showMessageDialog(c, "ENTER FULL DETAIL ");
+					JOptionPane.showMessageDialog(containerObj, "ENTER FULL DETAIL ");
 
 				}
 
@@ -1054,7 +1054,7 @@ public class Sem extends JFrame {
 		sum = 0.0;
 		creditSum = 0;
 		res = 0;
-		c.removeAll();
+		containerObj.removeAll();
 		JPanel p = new JPanel();
 		JButton but = new JButton("CALCULATE ");
 		but.setBounds(10, 330, 110, 20);
@@ -1062,7 +1062,7 @@ public class Sem extends JFrame {
 		result.setBounds(125, 330, 50, 20);
 		p.add(but);
 		p.add(result);
-		c.add(p);
+		containerObj.add(p);
 		p.setLayout(null);
 		p.setBackground(new Color(214, 214, 214));
 		p.setBounds(10, 100, 270, 500);
@@ -1140,7 +1140,7 @@ public class Sem extends JFrame {
 
 				{
 
-					JOptionPane.showMessageDialog(c, " ENTER FULL DETAIL ");
+					JOptionPane.showMessageDialog(containerObj, " ENTER FULL DETAIL ");
 
 				}
 
@@ -1169,7 +1169,7 @@ public class Sem extends JFrame {
 
 		p.add(but);
 		p.add(result);
-		c.add(p);
+		containerObj.add(p);
 
 		p.setLayout(null);
 		p.setBackground(new Color(214, 214, 214));
@@ -1249,7 +1249,7 @@ public class Sem extends JFrame {
 
 				{
 
-					JOptionPane.showMessageDialog(c, "Enter Full Detail.");
+					JOptionPane.showMessageDialog(containerObj, "Enter Full Detail.");
 
 				}
 
